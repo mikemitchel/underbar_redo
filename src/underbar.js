@@ -95,11 +95,20 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-
+    return _.filter(collection, function(itemInCollection){
+      return test(itemInCollection) === false;
+    })
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var results = [];
+    _.each(array, function(element){
+      if (_.indexOf(results, element) === -1){
+        results.push(element);
+      }
+    })
+    return results;
   };
 
 
